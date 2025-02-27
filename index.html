@@ -32,116 +32,198 @@
     </style>
   </head>
   <body>
-    <div class="form-container">
-      <h1>Contact Us</h1>
-      <form id="contactForm" novalidate autocomplete="off">
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="firstName" class="required">First Name</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                autocomplete="off"
-              />
-              <div class="error" id="firstNameError">
-                This field is required
+    <main>
+      <div class="form-container" role="region" aria-labelledby="formTitle">
+        <h1 id="formTitle">Contact Us</h1>
+        <form id="contactForm" novalidate autocomplete="off">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="firstName" class="required">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  autocomplete="given-name"
+                  required
+                  aria-required="true"
+                  aria-describedby="firstNameError"
+                  aria-invalid="false"
+                />
+                <div
+                  class="error"
+                  id="firstNameError"
+                  role="alert"
+                  aria-live="assertive"
+                  hidden
+                >
+                  This field is required
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="lastName" class="required">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  autocomplete="family-name"
+                  required
+                  aria-required="true"
+                  aria-describedby="lastNameError"
+                  aria-invalid="false"
+                />
+                <div
+                  class="error"
+                  id="lastNameError"
+                  role="alert"
+                  aria-live="assertive"
+                  hidden
+                >
+                  This field is required
+                </div>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="lastName" class="required">Last Name</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                autocomplete="off"
-              />
-              <div class="error" id="lastNameError">This field is required</div>
+
+          <div class="form-group">
+            <label for="email" class="required">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="emailError"
+              aria-invalid="false"
+            />
+            <div
+              class="error"
+              id="emailError"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              Please enter a valid email address
             </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="email" class="required">Email Address</label>
-          <input type="email" id="email" name="email" />
-          <div class="error" id="emailError">
-            Please enter a valid email address
+          <div class="form-group">
+            <fieldset>
+              <legend class="required">Query Type</legend>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="generalEnquiry"
+                    name="queryType"
+                    value="General Enquiry"
+                    required
+                    aria-required="true"
+                  />
+                  <label for="generalEnquiry">
+                    <span class="radio-custom"></span>
+                    General Enquiry
+                  </label>
+                </div>
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="supportRequest"
+                    name="queryType"
+                    value="Support Request"
+                  />
+                  <label for="supportRequest">
+                    <span class="radio-custom"></span>
+                    Support Request
+                  </label>
+                </div>
+              </div>
+              <div
+                class="error"
+                id="queryTypeError"
+                role="alert"
+                aria-live="assertive"
+                hidden
+              >
+                Please select a query type
+              </div>
+            </fieldset>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label class="required">Query Type</label>
-          <div class="radio-group">
-            <div class="radio-option">
-              <input
-                type="radio"
-                id="generalEnquiry"
-                name="queryType"
-                value="General Enquiry"
-              />
-              <label for="generalEnquiry">
-                <span class="radio-custom"></span>
-                General Enquiry
-              </label>
+          <div class="form-group">
+            <label for="message" class="required">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              aria-required="true"
+              aria-describedby="messageError"
+              aria-invalid="false"
+            ></textarea>
+            <div
+              class="error"
+              id="messageError"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              This field is required
             </div>
-            <div class="radio-option">
-              <input
-                type="radio"
-                id="supportRequest"
-                name="queryType"
-                value="Support Request"
-              />
-              <label for="supportRequest">
-                <span class="radio-custom"></span>
-                Support Request
-              </label>
+          </div>
+
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              id="consent"
+              name="consent"
+              required
+              aria-required="true"
+              aria-describedby="consentError"
+              aria-invalid="false"
+            />
+            <label for="consent" class="required"
+              >I consent to being contacted by the team</label
+            >
+            <div
+              class="error"
+              id="consentError"
+              role="alert"
+              aria-live="assertive"
+              hidden
+            >
+              To submit this form, please consent to being contacted
             </div>
           </div>
-          <div class="error" id="queryTypeError">
-            Please select a query type
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label for="message" class="required">Message</label>
-          <textarea id="message" name="message"></textarea>
-          <div class="error" id="messageError">This field is required</div>
-        </div>
-
-        <div class="checkbox-group">
-          <input type="checkbox" id="consent" name="consent" />
-          <label for="consent" class="required"
-            >I consent to being contacted by the team</label
-          >
-          <div class="error" id="consentError">
-            To submit this form, please consent to being contacted
-          </div>
-        </div>
-
-        <button type="submit" class="submit-btn">Submit</button>
-      </form>
-      <!-- <div class="attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
-      </div> -->
-    </div>
-    <div id="successMessage" class="success-message">
-      <div class="success-message__header">
-        <img
-          src="/assets/images/icon-success-check.svg"
-          alt="Success Icon"
-          class="success-message__icon"
-        />
-        <h2 class="success-message__title">Message Sent!</h2>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
       </div>
-      <p class="success-message__content">
-        Thanks for completing the form. We'll be in touch soon!
-      </p>
-    </div>
+
+      <div
+        id="successMessage"
+        class="success-message"
+        role="alert"
+        aria-live="assertive"
+        tabindex="-1"
+        hidden
+      >
+        <div class="success-message__header">
+          <img
+            src="/assets/images/icon-success-check.svg"
+            alt="Success Icon"
+            class="success-message__icon"
+            aria-hidden="true"
+          />
+          <h2 class="success-message__title">Message Sent!</h2>
+        </div>
+        <p class="success-message__content">
+          Thanks for completing the form. We'll be in touch soon!
+        </p>
+      </div>
+    </main>
     <script src="/script.js"></script>
   </body>
 </html>

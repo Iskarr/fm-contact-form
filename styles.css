@@ -308,3 +308,14 @@ textarea.error-field {
   font-size: 0.75em;
   letter-spacing: 1px;
 }
+
+/* dont show any styling from the fieldset, just keep the content inside it */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  margin-bottom: 15px;
+}
