@@ -1,164 +1,310 @@
+/* write me 3 color variables, light green, green and red */
+
+:root {
+  --lightGreen: hsl(148, 38%, 91%);
+  --darkGreen: hsl(169, 82%, 27%);
+  --brightRed: hsl(0, 66%, 54%);
+  /* Neutral */
+  --White: hsl(0, 0%, 100%);
+  --Grey-medium: hsl(186, 15%, 59%);
+  --Grey-darker: hsl(187, 24%, 22%);
+  --base-font: "Karla", sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #e0f2e9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #e0f2e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  font-size: 16px;
 }
 
 .form-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 40px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 21%;
 }
 
 h1 {
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 30px;
-    font-size: 28px;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 28px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-    font-weight: normal;
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: normal;
 }
 
 .required::after {
-    content: " *";
-    color: #777;
+  content: " *";
+  color: var(--darkGreen);
 }
 
 input[type="text"],
 input[type="email"],
 textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover {
+  border-color: var(--darkGreen);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border: 1px solid var(--darkGreen);
 }
 
 textarea {
-    min-height: 100px;
-    resize: vertical;
+  min-height: 100px;
+  resize: vertical;
 }
 
 .radio-group {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .radio-option {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 15px;
-    flex: 1;
-    position: relative;
-    cursor: pointer;
-}
-
-.radio-option input {
-    position: absolute;
-    opacity: 0;
+  display: flex;
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+  border-radius: 7px;
 }
 
 .radio-option label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  border-radius: 7px;
 }
 
+input[type="radio"]:checked + label {
+  display: block; /* Makes the label take up a full line */
+  width: 100%; /* Ensures it spans the container's full width */
+  background-color: var(--lightGreen);
+  border: 1px solid var(--darkGreen);
+  border-radius: 7px;
+}
+
+.radio-option input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio-option label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  font-family: "Karla", sans-serif;
+  font-weight: 500;
+}
+
+/* Default custom radio styling */
 .radio-custom {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    margin-right: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Change border when radio is checked */
+input[type="radio"]:checked + label .radio-custom {
+  border: 2px solid green;
 }
 
 .radio-custom::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: transparent;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
 }
 
 .radio-option input:checked + label .radio-custom::after {
-    background: #108768;
+  background: #108768;
 }
 
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 30px;
+/* Consent Checkbox group */
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
 }
 
-.checkbox-group input {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
+#consentError {
+  margin-bottom: 10px;
+}
+
+.checkbox-group label {
+  position: relative;
+  padding-left: 30px;
+  margin: 40px 0 10px 0; /* reduced bottom margin from 40px to 10px */
+  cursor: pointer;
+}
+
+.checkbox-group label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+input[type="checkbox"]:checked + label::before {
+  background-image: url("/assets/images/icon-checkbox-check.svg");
+  background-size: cover;
+  background-position: center;
+  border: none; /* remove border if needed */
 }
 
 .submit-btn {
-    background-color: #108768;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 15px;
-    width: 100%;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: #108768;
+  color: white;
+  border: none;
+  margin-top: 25px;
+  border-radius: 4px;
+  padding: 15px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .submit-btn:hover {
-    background-color: #0c6a50;
+  background-color: #074930;
 }
 
 .error {
-    color: #d9534f;
-    font-size: 14px;
-    margin-top: 5px;
-    display: none;
+  color: #d9534f;
+  font-size: 16px;
+  margin-top: 13px;
+  display: none;
+  font-family: "Karla", sans-serif;
 }
 
-input.error-field, 
+input.error-field,
 textarea.error-field {
-    border-color: #d9534f;
+  border-color: #d9534f;
 }
 
 .row {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .col {
-    flex: 1;
+  flex: 1;
 }
 
 @media (max-width: 600px) {
-    .row {
-        flex-direction: column;
-        gap: 10px;
-    }
+  .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Responsive Design */
+/* @media screen (max-width: 768px) {
+} */
+
+@media only screen and (max-width: 375px) {
+  .radio-group {
+    flex-direction: column;
+  }
+
+  .success-message {
+    width: 80%;
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .radio-group {
+    flex-direction: column;
+  }
+
+  .success-message {
+    width: 90%;
+    margin-top: 15px;
+  }
+}
+
+/* Success message */
+.success-message {
+  display: none; /* Hidden by default; show via JS on success */
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #074949;
+  color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 70%;
+  max-width: 400px;
+  z-index: 1000;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header: Icon and title on the same line */
+.success-message__header {
+  display: flex;
+  align-items: center;
+}
+
+/* Icon styling */
+.success-message__icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/* Title styling */
+.success-message__title {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Content styling (new line) */
+.success-message__content {
+  margin: 10px 0 0;
+  font-size: 0.75em;
+  letter-spacing: 1px;
 }
